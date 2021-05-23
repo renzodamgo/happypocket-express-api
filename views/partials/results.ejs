@@ -1,0 +1,27 @@
+
+<% if(typeof results != 'undefined'){ %>
+    <h2>Cartera</h2>
+    <% var c = 1; %> 
+    <table class="table">
+        <thead>
+            <tr>
+              <th scope="col"># Factura</th>
+              <th scope="col">Monto Recibido</th>
+              <th scope="col">Tasa</th>
+              <th scope="col">Resultado</th>
+            </tr>
+        </thead>
+        <tbody>
+    <% results.forEach(function(result){ %>
+            <tr>
+                <th scope="row"><%= c; %></th>
+                <td><%= result.montIni; %></td>
+                <td><%= result.tasa; %></td>
+                <td><%= result.resultado; %></td>
+            </tr>  
+            <% c = c+1; %> 
+    <% }); %>
+        </tbody>
+    </table>    
+      
+<% } %>

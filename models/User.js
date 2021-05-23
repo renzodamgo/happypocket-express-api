@@ -1,5 +1,13 @@
 const mongoose = require('mongoose');
 
+
+const resultsSchema = new mongoose.Schema({ 
+    montIni: Number,
+    tasa: Number,
+    resultado:Number,
+    
+});
+
 const UserSchema = new mongoose.Schema({
     dni:{
         type: Number,
@@ -29,7 +37,7 @@ const UserSchema = new mongoose.Schema({
         type:String,
         required: true
     },
-    results: [Number],
+    results: [resultsSchema],
     date:{
         type:Date,
         default: Date.now
