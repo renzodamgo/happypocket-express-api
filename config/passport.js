@@ -8,11 +8,11 @@ const User = require('../models/User');
 
 module.exports = function(passport){
     passport.use(
-        new LocalStrategy({ usernameField: 'email'}, (email, password,done)=>{
-            User.findOne({email : email})
+        new LocalStrategy({ usernameField: 'dni'}, (dni, password,done)=>{
+            User.findOne({dni : dni})
                 .then(user=>{
                     if(!user){
-                        return done(null, false,{message: 'El email no esta registrado'});
+                        return done(null, false,{message: 'El DNI no esta registrado'});
                     }
                   bcrypt.compare(password,user.password,(err, isMatch)=>{
                     if (isMatch){
