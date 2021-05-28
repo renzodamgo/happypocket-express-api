@@ -13,10 +13,17 @@ res.render('dashboard',{
 
 // LOGICA DEL TCEA
 router.post('/dashboard',ensureAuthenticated ,(req,res) => {
+    //-------Datos de entrada-------
     const { montIni,tasa} = req.body;
     let results = req.user.results;
     const r = montIni * tasa
 
+    //-------Datos intemedios-------
+    //Tiempo: t
+    //Calcular TASA: tea
+    
+    
+    //-------Datos de salida-------
     result ={
         montIni: montIni,
         tasa : tasa,
