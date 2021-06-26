@@ -2,9 +2,11 @@ const mongoose = require('mongoose');
 
 
 const resultsSchema = new mongoose.Schema({ 
-    montIni: Number,
-    tasa: Number,
-    resultado:Number,
+    TCE: Number,
+    tasaDes:Number,
+    valNom:Number,
+    des:Number,
+    valNeto:Number
     
 });
 

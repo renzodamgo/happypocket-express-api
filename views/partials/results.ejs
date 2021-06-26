@@ -6,18 +6,22 @@
         <thead>
             <tr>
               <th scope="col"># Factura</th>
-              <th scope="col">Monto Recibido</th>
-              <th scope="col">Tasa</th>
-              <th scope="col">Resultado</th>
+              <th scope="col">Tasa de Costo Efectiva</th>
+              <th scope="col">Tasa descontada</th>
+              <th scope="col">Valor Nominal</th>
+              <th scope="col">Descuento</th>
+              <th scope="col">Valor Neto</th>
             </tr>
         </thead>
         <tbody>
     <% results.forEach(function(result){ %>
             <tr>
                 <th scope="row"><%= c; %></th>
-                <td><%= result.montIni; %></td>
-                <td><%= result.tasa; %></td>
-                <td><%= result.resultado; %></td>
+                <td><%= (result.TCE*100).toFixed(4); %></td>
+                <td><%= (result.tasaDes*100).toFixed(4); %></td>
+                <td><%= result.valNom; %></td>
+                <td><%= (result.des).toFixed(4); %></td>
+                <td><%= (result.valNeto).toFixed(4); %></td>
             </tr>  
             <% c = c+1; %> 
     <% }); %>

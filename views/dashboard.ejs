@@ -1,35 +1,33 @@
-<div class="container shadow bg-white ">
+<div class="container shadow bg-white">
     <div class="row">
       <div class="col">
         <h1 class="mt-4">Happy Pocket Dashboard</h1>
         <p class="lead mb-3">Bienvenido <%= name %></p>
       </div>
 
-      <div class="col-3">
+      <div class="col-2">
         <a href="/users/logout" class="btn btn-primary">Logout</a>
       </div>
     </div>
 
-    <h2>*Prototipo</h2>
+    <h2>Inserte los Datos</h2>
     <!-- INPUT DEL USUARIO -->
     <form action="/dashboard" method="POST">
       <div class="form-group">
         
-        <label for="montIni">Monto Inicial</label>
+        <label for="valNom">Valor Nominal:</label>
         <input 
-        type="number" 
         class="form-control" 
-        id="montIni"  
-        name="montIni"
+        id="valNom"  
+        name="valNom"
         class="form-control"
         placeholder="El monto recibido"
-        value="<%= typeof montIni != 'undefined' ? montIni : '' %>"
+        value="<%= typeof valNom != 'undefined' ? valNom : '' %>"
         required>
       </div>
       <div class="form-group">
-        <label for="tasa">Tasa</label>
+        <label for="tasa">Tasa:</label>
         <input
-        type="number" 
         class="form-control" 
         id="tasa"  
         name="tasa"
@@ -38,13 +36,35 @@
         value="<%= typeof tasa != 'undefined' ? tasa : '' %>"
         required>
       </div>
+      <div class="form-group">
+        <label for="tPeriodo">Periodo de la tasa:</label>
+        <input
+        class="form-control" 
+        id="tPeriodo"  
+        name="tPeriodo"
+        class="form-control"
+        placeholder="Tasa Efectiva o Nominal"
+        value="<%= typeof tPeriodo != 'undefined' ? tPeriodo : '' %>"
+        required>
+      </div>
+      <div class="form-group">
+        <label for="nDias">Número de dias:</label>
+        <input
+        class="form-control" 
+        id="nDias"  
+        name="nDias"
+        class="form-control"
+        placeholder="Tasa Efectiva o Nominal"
+        value="<%= typeof nDias != 'undefined' ? nDias : '' %>"
+        required>
+      </div>
       <button type="submit" class="btn btn-primary mb-3">Cacular</button>
     </form>
 
     <%- include ("./partials/results") %>
 
-    <h2>Cartera de Ejemplo</h2>
-    <!-- TABLA DE FACTURAS -->
+    <!-- <h2>Cartera de Ejemplo</h2>
+    TABLA DE FACTURAS
     <table class="table">
       <thead>
         <tr>
@@ -74,7 +94,7 @@
           <td>9.2%</td>
         </tr>
       </tbody>
-    </table>
+    </table> -->
 </div>
 
 
