@@ -1,69 +1,117 @@
 <div class="container shadow bg-white">
+  <div class="row">
+    <div class="col">
+      <h1 class="mt-4">Happy Pocket Dashboard</h1>
+      <p class="lead mb-3">Bienvenido <%= name %></p>
+    </div>
+
+    <div class="col-2">
+      <a href="/users/logout" class="btn btn-primary">Logout</a>
+    </div>
+  </div>
+
+  <h2>Inserte los Datos</h2>
+  <!-- INPUT DEL USUARIO -->
+  <form action="/dashboard" method="POST">
     <div class="row">
       <div class="col">
-        <h1 class="mt-4">Happy Pocket Dashboard</h1>
-        <p class="lead mb-3">Bienvenido <%= name %></p>
+        <div class="form-group">
+          <label for="valNom">Valor Nominal:</label>
+          <input
+            class="form-control"
+            id="valNom"
+            name="valNom"
+            class="form-control"
+            placeholder="El monto recibido"
+            value="<%= typeof valNom != 'undefined' ? valNom : '' %>"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="fIni">Fecha de Giro:</label>
+          <input
+            type="date"
+            class="form-control"
+            id="fIni"
+            name="fIni"
+            class="form-control"
+            placeholder="Tasa Efectiva o Nominal"
+            value="<%= typeof fIni != 'undefined' ? fIni : '' %>"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="fVen">Fecha de Vencimiento:</label>
+          <input
+            type="date"
+            class="form-control"
+            id="fVen"
+            name="fVen"
+            class="form-control"
+            placeholder="Tasa Efectiva o Nominal"
+            value="<%= typeof fVen != 'undefined' ? fVen : '' %>"
+            required
+          />
+        </div>
       </div>
+      
+      <div class="col">
+        <div class="form-group">
+          <div>
+            <input type="radio" id="efectiva" name="tipoTasa" value="efectiva" checked/>
+            <label for="efectiva">Tasa efectiva</label>
+          </div>
 
-      <div class="col-2">
-        <a href="/users/logout" class="btn btn-primary">Logout</a>
+          <div>
+            <input type="radio" id="nominal" name="tipoTasa" value="nominal" />
+            <label for="nominal">Tasa Nominal</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="tasa">Tasa:</label>
+          <input
+            class="form-control"
+            id="tasa"
+            name="tasa"
+            class="form-control"
+            placeholder="3"
+            value="<%= typeof tasa != 'undefined' ? tasa : '' %>"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="tPeriodo">Periodo de la tasa:</label>
+          <input
+            class="form-control"
+            id="tPeriodo"
+            name="tPeriodo"
+            class="form-control"
+            placeholder=360
+            value="<%= typeof tPeriodo != 'undefined' ? tPeriodo : '' %>"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="tPeriodoCap">Periodo de capitalización:</label>
+          <input
+            class="form-control"
+            id="tPeriodoCap"
+            name="tPeriodoCap"
+            class="form-control"
+            placeholder=30
+            value="<%= typeof tPeriodo != 'undefined' ? tPeriodo : '' %>"
+            required
+          />
+        </div>
       </div>
     </div>
 
-    <h2>Inserte los Datos</h2>
-    <!-- INPUT DEL USUARIO -->
-    <form action="/dashboard" method="POST">
-      <div class="form-group">
-        
-        <label for="valNom">Valor Nominal:</label>
-        <input 
-        class="form-control" 
-        id="valNom"  
-        name="valNom"
-        class="form-control"
-        placeholder="El monto recibido"
-        value="<%= typeof valNom != 'undefined' ? valNom : '' %>"
-        required>
-      </div>
-      <div class="form-group">
-        <label for="tasa">Tasa:</label>
-        <input
-        class="form-control" 
-        id="tasa"  
-        name="tasa"
-        class="form-control"
-        placeholder="Tasa Efectiva o Nominal"
-        value="<%= typeof tasa != 'undefined' ? tasa : '' %>"
-        required>
-      </div>
-      <div class="form-group">
-        <label for="tPeriodo">Periodo de la tasa:</label>
-        <input
-        class="form-control" 
-        id="tPeriodo"  
-        name="tPeriodo"
-        class="form-control"
-        placeholder="Tasa Efectiva o Nominal"
-        value="<%= typeof tPeriodo != 'undefined' ? tPeriodo : '' %>"
-        required>
-      </div>
-      <div class="form-group">
-        <label for="nDias">Número de dias:</label>
-        <input
-        class="form-control" 
-        id="nDias"  
-        name="nDias"
-        class="form-control"
-        placeholder="Tasa Efectiva o Nominal"
-        value="<%= typeof nDias != 'undefined' ? nDias : '' %>"
-        required>
-      </div>
-      <button type="submit" class="btn btn-primary mb-3">Cacular</button>
-    </form>
+    <button type="submit" class="btn btn-primary mb-3">Cacular</button>
+  </form>
 
-    <%- include ("./partials/results") %>
+  <%- include ("./partials/results") %>
 
-    <!-- <h2>Cartera de Ejemplo</h2>
+  <!-- <h2>Cartera de Ejemplo</h2>
     TABLA DE FACTURAS
     <table class="table">
       <thead>
@@ -96,5 +144,3 @@
       </tbody>
     </table> -->
 </div>
-
-
