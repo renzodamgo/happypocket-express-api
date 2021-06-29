@@ -1,0 +1,21 @@
+
+<% if(typeof result != 'undefined'){ %>
+    <hr class="dotted">
+    <h2>Letra Descontada</h2>
+    
+    
+              <th scope="col">Tasa de Costo Efectiva</th>
+              <th scope="col">Tasa descontada</th>
+              <th scope="col">Valor Nominal</th>
+              <th scope="col">Descuento</th>
+              <th scope="col">Valor Neto</th>
+           
+               
+                <td><%= (result.TCE*100).toFixed(4); %></td>
+                <td><%= (result.tasaDes*100).toFixed(4); %></td>
+                <td><%= result.valNom; %></td>
+                <td><%= (result.des).toFixed(4); %></td>
+                <td><%= (result.valNeto).toFixed(4); %></td>
+            
+      
+<% } %>

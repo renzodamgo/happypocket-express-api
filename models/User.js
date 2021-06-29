@@ -6,7 +6,9 @@ const resultsSchema = new mongoose.Schema({
     tasaDes:Number,
     valNom:Number,
     des:Number,
-    valNeto:Number
+    valNeto:Number,
+    valRec:Number,
+    ValEnt: Number,
     
 });
 

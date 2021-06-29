@@ -9,14 +9,14 @@
       <a href="/users/logout" class="btn btn-primary">Logout</a>
     </div>
   </div>
-
+  <hr class="dotted">
   <h2>Inserte los Datos</h2>
   <!-- INPUT DEL USUARIO -->
   <form action="/dashboard" method="POST">
     <div class="row">
       <div class="col">
-        <div class="form-group">
-          <label for="valNom">Valor Nominal:</label>
+        <div class="form-group form-inline">
+          <label for="valNom">Valor Nominal: </label>
           <input
             class="form-control"
             id="valNom"
@@ -27,20 +27,33 @@
             required
           />
         </div>
-        <div class="form-group">
-          <label for="fIni">Fecha de Giro:</label>
+        <div class="form-group form-inline">
+          <label for="ret">Retención: </label>
+          <input
+            class="form-control"
+            id="ret"
+            name="ret"
+            class="form-control"
+            placeholder="Ej: 5,3"
+            value="<%= typeof ret != 'undefined' ? ret : '' %>"
+            required
+          />
+          <span>%</span>
+        </div>
+
+        <div class="form-group form-inline">
+          <label for="fIni">Fecha de Giro: </label>
           <input
             type="date"
             class="form-control"
             id="fIni"
             name="fIni"
             class="form-control"
-            placeholder="Tasa Efectiva o Nominal"
             value="<%= typeof fIni != 'undefined' ? fIni : '' %>"
             required
           />
         </div>
-        <div class="form-group">
+        <div class="form-group form-inline">
           <label for="fVen">Fecha de Vencimiento:</label>
           <input
             type="date"
@@ -48,17 +61,34 @@
             id="fVen"
             name="fVen"
             class="form-control"
-            placeholder="Tasa Efectiva o Nominal"
             value="<%= typeof fVen != 'undefined' ? fVen : '' %>"
             required
           />
         </div>
+        <div class="form-group form-inline">
+          <label for="fDes">Fecha de Descuento:</label>
+          <input
+            type="date"
+            class="form-control"
+            id="fDes"
+            name="fDes"
+            class="form-control"
+            value="<%= typeof fDes != 'undefined' ? fDes : '' %>"
+            required
+          />
+        </div>
       </div>
-      
+
       <div class="col">
         <div class="form-group">
           <div>
-            <input type="radio" id="efectiva" name="tipoTasa" value="efectiva" checked/>
+            <input
+              type="radio"
+              id="efectiva"
+              name="tipoTasa"
+              value="efectiva"
+              checked
+            />
             <label for="efectiva">Tasa efectiva</label>
           </div>
 
@@ -67,7 +97,7 @@
             <label for="nominal">Tasa Nominal</label>
           </div>
         </div>
-        <div class="form-group">
+        <div class="form-group form-inline">
           <label for="tasa">Tasa:</label>
           <input
             class="form-control"
@@ -78,38 +108,107 @@
             value="<%= typeof tasa != 'undefined' ? tasa : '' %>"
             required
           />
+          <span>%</span>
         </div>
-        <div class="form-group">
+        <div class="form-group form-inline">
           <label for="tPeriodo">Periodo de la tasa:</label>
           <input
             class="form-control"
             id="tPeriodo"
             name="tPeriodo"
             class="form-control"
-            placeholder=360
+            placeholder="360"
             value="<%= typeof tPeriodo != 'undefined' ? tPeriodo : '' %>"
             required
           />
+          <span>días</span>
         </div>
-        <div class="form-group">
+        <div class="form-group form-inline">
           <label for="tPeriodoCap">Periodo de capitalización:</label>
           <input
             class="form-control"
             id="tPeriodoCap"
             name="tPeriodoCap"
             class="form-control"
-            placeholder=30
+            placeholder="30"
             value="<%= typeof tPeriodo != 'undefined' ? tPeriodo : '' %>"
             required
           />
+          <span>días</span>
         </div>
       </div>
     </div>
 
-    <button type="submit" class="btn btn-primary mb-3">Cacular</button>
+    <button type="submit" class="btn btn-primary mb-3">Calcular</button>
   </form>
-
-  <%- include ("./partials/results") %>
+  <hr class="dotted">
+  <div class="row">
+    <div class="col">
+      <h3>Gastos/Costes Iniciales</h3>
+    <form action="/dashboard/inicial" method="POST"></form>
+    
+      <label for="costName">Tipo de Coste/Gasto Inicial:</label>
+      <select class="form-select" name="costName" id="costName">
+        <option value="Portes">Portes</option>
+        <option value="Fotocopias">Fotocopias</option>
+        <option value="Comision de Estudio">Comision de Estudio</option>
+        <option value="Gastos de administración">Gastos de administración</option>
+      </select>
+      <div class="row">
+        <div class="col">
+          <div class="form-group form-inline">
+            <label for="costIni">Comision: </label>
+            <input
+              class="form-control"
+              id="costIni"
+              name="costIni"
+              class="form-control"
+              placeholder="El monto recibido"
+              value="<%= typeof costIni != 'undefined' ? costIni : '' %>"
+              required
+            />
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary mb-3">Agregar Costo</button>
+    </form>
+    <%- include ("./partials/costesIni") %>
+  </div>
+    <div class="col">
+      <h3>Gastos/Costes Finales</h3>
+      <form action="/dashboard/final" method="POST">
+    
+        <label for="costName">Tipo de Coste/Gasto Final:</label>
+        <select class="form-select" name="costName" id="costName">
+          <option value="Portes">Portes</option>
+          <option value="Fotocopias">Fotocopias</option>
+          <option value="Comision de Estudio">Comision de Estudio</option>
+          <option value="Gastos de administración">Gastos de administración</option>
+        </select>
+        <div class="row">
+          <div class="col">
+            <div class="form-group form-inline">
+              <label for="costFin">Comision: </label>
+              <input
+                class="form-control"
+                id="costFin"
+                name="costFin"
+                class="form-control"
+                placeholder="El monto recibido"
+                value="<%= typeof costFin != 'undefined' ? costFin : '' %>"
+                required
+              />
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary mb-3">Agregar Costo</button>
+      </form>
+      <%- include ("./partials/costesFin") %>
+    </div>
+  </div>
+  
+  
+  <%- include ("./partials/result") %>
 
   <!-- <h2>Cartera de Ejemplo</h2>
     TABLA DE FACTURAS

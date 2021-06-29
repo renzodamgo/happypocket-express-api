@@ -1,0 +1,24 @@
+<% if(typeof costInis != 'undefined'){ %>
+   
+
+    <table class="table">
+        <thead>
+            <tr>
+          
+              <th scope="col">Nombre</th>
+              <th scope="col">Comision</th>
+             
+            </tr>
+        </thead>
+        <tbody>
+    <% costInis.forEach(function(costeIni){ %>
+            <tr>
+                <td><%= costeIni.nombre; %></td>
+                <td><%= costeIni.comision; %></td>
+            </tr>  
+            
+    <% }); %>
+        </tbody>
+    </table>    
+      
+<% } %>
