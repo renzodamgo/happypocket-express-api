@@ -6,7 +6,8 @@
         <thead>
             <tr>
               <th scope="col"># Factura</th>
-              <th scope="col">Tasa de Costo Efectiva</th>
+              <th scope="col">TCEA</th>
+              
               <th scope="col">Tasa descontada</th>
               <th scope="col">Valor Nominal</th>
               <th scope="col">Descuento</th>
@@ -17,11 +18,12 @@
     <% results.forEach(function(result){ %>
             <tr>
                 <th scope="row"><%= c; %></th>
-                <td><%= (result.TCE*100).toFixed(4); %></td>
-                <td><%= (result.tasaDes*100).toFixed(4); %></td>
-                <td><%= result.valNom; %></td>
-                <td><%= (result.des).toFixed(4); %></td>
-                <td><%= (result.valNeto).toFixed(4); %></td>
+                <td><%= (result.TCE*100).toFixed(4); %>%</td>
+      
+                <td><%= (result.tasaDes*100).toFixed(4); %>%</td>
+                <td><%= result.valNom.toLocaleString('es-PE',{ style: 'currency', currency: 'PEN' }); %></td>
+                <td><%= Number(result.des.toFixed(4)).toLocaleString('es-PE',{ style: 'currency', currency: 'PEN' }); %></td>
+                <td><%= Number(result.valNeto.toFixed(4)).toLocaleString('es-PE',{ style: 'currency', currency: 'PEN' }); %></td>
             </tr>  
             <% c = c+1; %> 
     <% }); %>

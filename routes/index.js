@@ -141,13 +141,14 @@ router.post('/dashboard',ensureAuthenticated ,(req,res) => {
     //Calcular TASA: 
     //Si es Tasa Nominal
     if(tipoTasa == 'efectiva'){
-        TEP = ((1+ tasa/100)**(t/360)) -1
+        TEP = ((1+ tasa/100)**(t/tPeriodo)) -1
     }
     //Si es Tasa Efectiva
     if(tipoTasa == 'nominal'){
-        tasa = convertirTNaTEP(tasa,tPeriodo,tPeriodoCap,360)
-        TEP = ((1+ tasa/100)**(t/tPeriodo)) -1
+        tasa2 = convertirTNaTEP(tasa,tPeriodo,tPeriodoCap,tPeriodoCap)
+        TEP = ((1+ tasa2/100)**(t/tPeriodo)) -1
     }
+    console.log("tasa nominal: " ,tasa2,TEP)
     //Costos Iniciales y Finales
     let costIniciales = 0
     let costFinales = 0
@@ -169,13 +170,15 @@ router.post('/dashboard',ensureAuthenticated ,(req,res) => {
     let valRec = valNeto - ret - costIniciales
     //Valor Entregado
     let valEnt = Number(valNom) + costFinales - ret
-
+    let TCEA = ((valEnt/valRec)**(360/t))-1
+    //TCEA
     console.log(tasa,t,tPeriodo)
     console.log(Number(valNom),costFinales,ret)
     //-------Datos de salida-------
     
     result ={
-        TCE: TEP,
+        TCE: TCEA,
+        TEP: TEP,
         tasaDes:d,
         valNom:Number(valNom),
         des:des,
@@ -211,3 +214,8 @@ router.post('/dashboard',ensureAuthenticated ,(req,res) => {
 });
 
 module.exports = router;
+
+Intl.NumberFormat("es-MX",{
+    style: "currency",
+    currency: "PEN",
+}).format(12323323232)
