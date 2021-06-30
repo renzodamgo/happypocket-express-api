@@ -86,7 +86,7 @@ function convertirTNaTEP(TN, P, capitalizacion, periodo){
   n = periodo / capitalizacion
   m = P / capitalizacion
   i = TN/m
-  return pow(1 + i, n) - 1
+  return Math.pow(1 + i, n) - 1
 }
 
 router.post('/dashboard/inicial',ensureAuthenticated ,(req,res) => {
