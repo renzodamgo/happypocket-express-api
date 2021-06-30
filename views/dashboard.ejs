@@ -98,7 +98,7 @@
             name="valNom"
             class="form-control"
             placeholder="El monto recibido"
-            value="<%= typeof valNom != 'undefined' ? result.valNom : '' %>"
+            value="<%= typeof result.valNom != 'undefined' ? result.valNom : '' %>"
             required
           />
         </div>
@@ -110,7 +110,7 @@
             name="ret"
             class="form-control"
             placeholder="Ej: 5,3"
-            value="<%= typeof ret != 'undefined' ? ret : '' %>"
+            value="<%= typeof result.ret != 'undefined' ? result.ret : '' %>"
             required
           />
           <span>%</span>
@@ -124,7 +124,7 @@
             id="fIni"
             name="fIni"
             class="form-control"
-            value="<%= typeof fIni != 'undefined' ? fIni : '' %>"
+            value="<%= typeof result.fIni != 'undefined' ? result.fIni : '' %>"
             required
           />
         </div>
@@ -136,7 +136,7 @@
             id="fVen"
             name="fVen"
             class="form-control"
-            value="<%= typeof fVen != 'undefined' ? fVen : '' %>"
+            value="<%= typeof result.fVen != 'undefined' ? result.fVen : '' %>"
             required
           />
         </div>
@@ -148,7 +148,7 @@
             id="fDes"
             name="fDes"
             class="form-control"
-            value="<%= typeof fDes != 'undefined' ? fDes : '' %>"
+            value="<%= typeof result.fDes != 'undefined' ? result.fDes : '' %>"
             required
           />
         </div>
@@ -180,7 +180,7 @@
             name="tasa"
             class="form-control"
             placeholder="3"
-            value="<%= typeof tasa != 'undefined' ? tasa : '' %>"
+            value="<%= typeof result.tasa != 'undefined' ? result.tasa : '' %>"
             required
           />
           <span>%</span>
@@ -193,7 +193,7 @@
             name="tPeriodo"
             class="form-control"
             placeholder="360"
-            value="<%= typeof tPeriodo != 'undefined' ? tPeriodo : '' %>"
+            value="<%= typeof result.tPeriodo != 'undefined' ? result.tPeriodo : '' %>"
             required
           />
           <span>días</span>
@@ -206,7 +206,7 @@
             name="tPeriodoCap"
             class="form-control"
             placeholder="30"
-            value="<%= typeof tPeriodo != 'undefined' ? tPeriodo : '' %>"
+            value="<%= typeof result.tPeriodo != 'undefined' ? result.tPeriodo : '' %>"
             required
           />
           <span>días</span>

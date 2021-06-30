@@ -9,6 +9,15 @@ const resultsSchema = new mongoose.Schema({
     valNeto:Number,
     valRec:Number,
     ValEnt: Number,
+    ret:Number,
+    fIni: String,
+    fVen: String,
+    fDes:String,
+    dias: Number,
+    tasa:Number,
+    tipoTasa:String,
+    tPeriodo:Number,
+    tPeriodoCap:Number,
     
 });
 

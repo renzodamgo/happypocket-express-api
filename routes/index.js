@@ -32,8 +32,8 @@ res.render('dashboard',{
 }));
 
 router.post('/dashboard/save',ensureAuthenticated ,(req,res) => {
-    // let results = req.user.results;
-    let results = [];
+    let results = req.user.results;
+    
     results.push(result)
     console.log("--------------")
     console.log(result)
@@ -181,7 +181,17 @@ router.post('/dashboard',ensureAuthenticated ,(req,res) => {
         des:des,
         valNeto:valNeto,
         valRec:valRec,
-        valEnt:valEnt
+        valEnt:valEnt,
+        ret:ret,
+        fIni:fIni,
+        fVen:fVen,
+        fDes:fDes,
+        dias: t,
+        tasa:tasa,
+        tipoTasa:tipoTasa,
+        tPeriodo:tPeriodo,
+        tPeriodoCap:tPeriodoCap,
+
     }
 
     // results.push(result)
