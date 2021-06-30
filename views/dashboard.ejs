@@ -98,7 +98,7 @@
             name="valNom"
             class="form-control"
             placeholder="El monto recibido"
-            value="<%= typeof result.valNom != 'undefined' ? result.valNom : '' %>"
+            value="<%= typeof valNom != 'undefined' ? result.valNom : '' %>"
             required
           />
         </div>
@@ -220,37 +220,7 @@
   
   
   <%- include ("./partials/result") %>
-
-  <!-- <h2>Cartera de Ejemplo</h2>
-    TABLA DE FACTURAS
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col"># Factura</th>
-          <th scope="col">Monto Recibido</th>
-          <th scope="col">Monto Final</th>
-          <th scope="col">TCEA</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>15000</td>
-          <td>18000</td>
-          <td>12.5%</td>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>15000</td>
-          <td>18000</td>
-          <td>2.3%</td>
-        </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>42000</td>
-          <td>60000</td>
-          <td>9.2%</td>
-        </tr>
-      </tbody>
-    </table> -->
+  
+  
+  
 </div>

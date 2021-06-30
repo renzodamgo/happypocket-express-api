@@ -31,6 +31,46 @@ res.render('dashboard',{
     result:result
 }));
 
+router.post('/dashboard/save',ensureAuthenticated ,(req,res) => {
+    // let results = req.user.results;
+    let results = [];
+    results.push(result)
+    console.log("--------------")
+    console.log(result)
+    req.user.results = results;
+    req.user.save();
+    res.render('dashboard',{
+        costFins: costesFin,
+        costInis: costesIni,
+        results : results,
+        name: req.user.name,
+        result:result
+    })
+});
+
+router.post('/dashboard/delete',ensureAuthenticated ,(req,res) => {
+    result = {
+        TCE: undefined,
+        tasaDes:undefined,
+        valNom:undefined,
+        des:undefined,
+        valNeto:undefined,
+        valRec:undefined,
+        valEnt:undefined
+    }
+    let results = req.user.results;
+    costesIni = [];
+    costesFin = []; 
+    res.render('dashboard',{
+        costFins: costesFin,
+        costInis: costesIni,
+        results : results,
+        name: req.user.name,
+        result: result
+    })
+});
+
+
 function convertirTNaTEP(TN, P, capitalizacion, periodo){
 //   """
 //   Entradas:
@@ -144,10 +184,11 @@ router.post('/dashboard',ensureAuthenticated ,(req,res) => {
         valEnt:valEnt
     }
 
-    results.push(result)
+    // results.push(result)
+    console.log("===Post==")
     console.log(result)
-    req.user.results = results;
-    req.user.save();
+    // req.user.results = results;
+    // req.user.save();
     res.render('dashboard',{
         costFins: costesFin,
         costInis: costesIni,

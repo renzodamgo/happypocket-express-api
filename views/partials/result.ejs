@@ -1,26 +1,34 @@
-
 <% if(typeof result.des != 'undefined'){ %>
-    <hr class="dotted">
-    <h2>Letra Descontada</h2>
-       
-    <div class="row">
-        <div class="col">
-            <h4><span>TEP: </span>
-            <span><%= (result.TCE*100).toFixed(4); %>%</span></h4>
-            <h4><span>Tasa Descontada: </span>
-            <span><%= (result.tasaDes*100).toFixed(4); %>% </span></h4>
-        </div>
-        <div class="col">
-            <h4><span>Valor Nominal: </span>
-            <span><%= result.valNom; %></span></h4>
-            <h4><span>Descuento: </span>
-            <span><%= (result.des).toFixed(4); %></span></h4>
-            <h4><span>Valor Neto: </span>
-            <span><%= (result.valNeto).toFixed(4); %></span></h4>
+<hr class="dotted" />
+<h2>Letra Descontada</h2>
 
-        </div>
-    </div>         
+<div class="row">
+  <div class="col">
+    <h4>
+      <span>TEP: </span> <span><%= (result.TCE*100).toFixed(4); %>%</span>
+    </h4>
+    <h4>
+      <span>Tasa Descontada: </span>
+      <span><%= (result.tasaDes*100).toFixed(4); %>% </span>
+    </h4>
+  </div>
+  <div class="col">
+    <h4><span>Valor Nominal: </span> <span><%= result.valNom; %></span></h4>
+    <h4>
+      <span>Descuento: </span> <span><%= (result.des).toFixed(4); %></span>
+    </h4>
+    <h4>
+      <span>Valor Neto: </span> <span><%= (result.valNeto).toFixed(4); %></span>
+    </h4>
+  </div>
+</div>
 
-            
-      
+<form action="/dashboard/save" method="POST">
+  <button type="submit" id="guardar">Guardar</button>
+</form>
+
+<form action="/dashboard/delete" method="POST">
+  <button type="submit" id="borrar">Borrar</button>
+</form>
+
 <% } %>
