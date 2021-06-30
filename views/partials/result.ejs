@@ -16,28 +16,28 @@
       <span><%= (result.tasaDes*100).toFixed(4); %>% </span>
     </h4>
     <h4>
-        <span>Días: </span> <span><%= result.dias; %></span>
+        <span>Días: </span> <span><%= result.dias; %> días</span>
       </h4>
       <h4>
-        <span>Costes Iniciales Totales: </span> <span><%= result.costIniciales; %></span>
+        <span>Costes Iniciales Totales: </span> <span><%= result.costIniciales.toLocaleString('es-PE',{ style: 'currency', currency: 'PEN' }); %></span>
       </h4>
       <h4>
-        <span>Constes Finales Totales: </span> <span><%= result.costFinales; %></span>
+        <span>Constes Finales Totales: </span> <span><%= result.costFinales.toLocaleString('es-PE',{ style: 'currency', currency: 'PEN' }); %></span>
       </h4>
   </div>
   <div class="col">
-    <h4><span>Valor Nominal: </span> <span><%= result.valNom; %></span></h4>
+    <h4><span>Valor Nominal: </span> <span><%= result.valNom.toLocaleString('es-PE',{ style: 'currency', currency: 'PEN' }); %></span></h4>
     <h4>
-      <span>Descuento: </span> <span><%= (result.des).toFixed(4); %></span>
+      <span>Descuento: </span> <span><%= Number(result.des.toFixed(4)).toLocaleString('es-PE',{ style: 'currency', currency: 'PEN' }); %></span>
     </h4>
     <h4>
-      <span>Valor Neto: </span> <span><%= (result.valNeto).toFixed(4); %></span>
+      <span>Valor Neto: </span> <span><%= Number(result.valNeto.toFixed(4)).toLocaleString('es-PE',{ style: 'currency', currency: 'PEN' }); %></span>
     </h4>
     <h4>
-        <span>Valor Total a Recibir: </span> <span><%= (result.valNeto).toFixed(4); %></span>
+        <span>Valor Total a Recibir: </span> <span><%= Number((result.valNeto.toFixed(4)).toLocaleString('es-PE',{ style: 'currency', currency: 'PEN' }); %></span>
       </h4>
       <h4>
-        <span>Valor Total a Entregar: </span> <span><%= (result.valNeto).toFixed(4); %></span>
+        <span>Valor Total a Entregar: </span> <span><%= Number((result.valNeto.toFixed(4)).toLocaleString('es-PE',{ style: 'currency', currency: 'PEN' }); %></span>
       </h4>
   </div>
 </div>
