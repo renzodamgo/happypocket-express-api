@@ -1,6 +1,6 @@
 <% if(typeof result.des != 'undefined'){ %>
 <hr class="dotted" />
-<h2>Letra Descontada</h2>
+<h2>Factura: </h2>
 
 <div class="row">
   <div class="col">
@@ -11,6 +11,15 @@
       <span>Tasa Descontada: </span>
       <span><%= (result.tasaDes*100).toFixed(4); %>% </span>
     </h4>
+    <h4>
+        <span>Días: </span> <span><%= result.dias; %></span>
+      </h4>
+      <h4>
+        <span>Costes Iniciales Totales: </span> <span><%= result.costIniciales; %></span>
+      </h4>
+      <h4>
+        <span>Constes Finales Totales: </span> <span><%= result.costFinales; %></span>
+      </h4>
   </div>
   <div class="col">
     <h4><span>Valor Nominal: </span> <span><%= result.valNom; %></span></h4>
@@ -20,6 +29,12 @@
     <h4>
       <span>Valor Neto: </span> <span><%= (result.valNeto).toFixed(4); %></span>
     </h4>
+    <h4>
+        <span>Valor Total a Recibir: </span> <span><%= (result.valNeto).toFixed(4); %></span>
+      </h4>
+      <h4>
+        <span>Valor Total a Entregar: </span> <span><%= (result.valNeto).toFixed(4); %></span>
+      </h4>
   </div>
 </div>
 

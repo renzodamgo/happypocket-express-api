@@ -191,6 +191,8 @@ router.post('/dashboard',ensureAuthenticated ,(req,res) => {
         tipoTasa:tipoTasa,
         tPeriodo:tPeriodo,
         tPeriodoCap:tPeriodoCap,
+        costIniciales:costFinales,
+        costFinales:costFinales,
 
     }
 

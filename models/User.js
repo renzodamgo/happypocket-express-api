@@ -18,6 +18,8 @@ const resultsSchema = new mongoose.Schema({
     tipoTasa:String,
     tPeriodo:Number,
     tPeriodoCap:Number,
+    costIniciales:Number,
+    costFinales:Number
     
 });
 
