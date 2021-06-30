@@ -146,7 +146,7 @@ router.post('/dashboard',ensureAuthenticated ,(req,res) => {
     //Si es Tasa Efectiva
     if(tipoTasa == 'nominal'){
         tasa2 = convertirTNaTEP(tasa,tPeriodo,tPeriodoCap,tPeriodoCap)
-        TEP = ((1+ tasa2/100)**(t/tPeriodo)) -1
+        TEP = ((1+ tasa2/100)**(t/tPeriodoCap)) -1
     }
     console.log("tasa nominal: " ,tasa2,TEP)
     //Costos Iniciales y Finales
