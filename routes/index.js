@@ -4,12 +4,31 @@ const { ensureAuthenticated} = require('../config/auth');
 //Welcome Page
 let costesIni = [];
 let costesFin = [];
+let result = {
+    TCE: undefined,
+    tasaDes:undefined,
+    valNom:undefined,
+    des:undefined,
+    valNeto:undefined,
+    valRec:undefined,
+    valEnt:undefined
+}
+
+
+
 router.get('/',(req,res) => res.render('welcome'));
+
+router.get('/cartera',ensureAuthenticated,(req,res) => 
+res.render('cartera',{
+    results: req.user.results,
+    name: req.user.name,
+}))
 
 router.get('/dashboard',ensureAuthenticated ,(req,res) => 
 res.render('dashboard',{
     name: req.user.name,
-    results: req.user.results
+    results: req.user.results,
+    result:result
 }));
 
 function convertirTNaTEP(TN, P, capitalizacion, periodo){
@@ -42,6 +61,7 @@ router.post('/dashboard/inicial',ensureAuthenticated ,(req,res) => {
         name: req.user.name,
         costInis: costesIni,
         costFins: costesFin,
+        result: result,
     })
     
 });
@@ -58,6 +78,7 @@ router.post('/dashboard/final',ensureAuthenticated ,(req,res) => {
         name: req.user.name,
         costFins: costesFin,
         costInis: costesIni,
+        result: result,
     })
    
 });
@@ -87,7 +108,7 @@ router.post('/dashboard',ensureAuthenticated ,(req,res) => {
         tasa = convertirTNaTEP(tasa,tPeriodo,tPeriodoCap,360)
         TEP = ((1+ tasa/100)**(t/tPeriodo)) -1
     }
-    
+    //Costos Iniciales y Finales
     let costIniciales = 0
     let costFinales = 0
 
@@ -98,16 +119,22 @@ router.post('/dashboard',ensureAuthenticated ,(req,res) => {
     costesFin.forEach(function(costFin){
         costFinales = costFinales + Number(costFin.comision);
     })
-
+    //Tasa Descontada
     let d = (TEP/(1+TEP))
+    //Descuento
     let des = valNom * d
+    //Valor Neto
     valNeto = valNom - des
+    // Valor Recibido
     let valRec = valNeto - ret - costIniciales
+    //Valor Entregado
     let valEnt = Number(valNom) + costFinales - ret
+
     console.log(tasa,t,tPeriodo)
     console.log(Number(valNom),costFinales,ret)
     //-------Datos de salida-------
-    let result ={
+    
+    result ={
         TCE: TEP,
         tasaDes:d,
         valNom:Number(valNom),
@@ -122,8 +149,11 @@ router.post('/dashboard',ensureAuthenticated ,(req,res) => {
     req.user.results = results;
     req.user.save();
     res.render('dashboard',{
+        costFins: costesFin,
+        costInis: costesIni,
         results : results,
         name: req.user.name,
+        result: result
     })
 });
 

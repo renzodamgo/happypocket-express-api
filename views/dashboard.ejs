@@ -1,14 +1,89 @@
 <div class="container shadow bg-white">
   <div class="row">
     <div class="col">
-      <h1 class="mt-4">Happy Pocket Dashboard</h1>
+      <h1 class="mt-4">Happy Pocket 💸<br>Dashboard</h1>
       <p class="lead mb-3">Bienvenido <%= name %></p>
     </div>
-
+    <div class="col-2">
+      <a href="/dashboard" class="btn btn-primary">dashboard</a>
+      
+    </div>
+    <div class="col-2">
+      <a href="/cartera" class="btn btn-primary">cartera</a>
+      
+    </div>
     <div class="col-2">
       <a href="/users/logout" class="btn btn-primary">Logout</a>
+      
     </div>
   </div>
+  <hr class="dotted">
+  <div class="row">
+    <div class="col">
+      <h3>Gastos/Costes Iniciales</h3>
+    <form action="/dashboard/inicial" method="POST">
+    
+      <label for="costName">Tipo de Coste/Gasto Inicial:</label>
+      <select class="form-select" name="costName" id="costName">
+        <option value="Portes">Portes</option>
+        <option value="Fotocopias">Fotocopias</option>
+        <option value="Comision de Estudio">Comision de Estudio</option>
+        <option value="Gastos de administración">Gastos de administración</option>
+      </select>
+      <div class="row">
+        <div class="col">
+          <div class="form-group form-inline">
+            <label for="costIni">Comision: </label>
+            <input
+              class="form-control"
+              id="costIni"
+              name="costIni"
+              class="form-control"
+              placeholder="El monto recibido"
+              value="<%= typeof costIni != 'undefined' ? costIni : '' %>"
+              required
+            />
+          </div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary mb-3">Agregar Costo</button>
+    </form>
+    <%- include ("./partials/costesIni") %>
+  </div>
+    <div class="col">
+      <h3>Gastos/Costes Finales</h3>
+      <form action="/dashboard/final" method="POST">
+    
+        <label for="costName">Tipo de Coste/Gasto Final:</label>
+        <select class="form-select" name="costName" id="costName">
+          <option value="Portes">Portes</option>
+          <option value="Fotocopias">Gastos de Administración</option>
+          <option value="Comision de Estudio">Otros Gastos</option>
+          
+        </select>
+        <div class="row">
+          <div class="col">
+            <div class="form-group form-inline">
+              <label for="costFin">Comision: </label>
+              <input
+                class="form-control"
+                id="costFin"
+                name="costFin"
+                class="form-control"
+                placeholder="El monto recibido"
+                value="<%= typeof costFin != 'undefined' ? costFin : '' %>"
+                required
+              />
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary mb-3">Agregar Costo</button>
+      </form>
+      <%- include ("./partials/costesFin") %>
+    </div>
+  </div>
+
+
   <hr class="dotted">
   <h2>Inserte los Datos</h2>
   <!-- INPUT DEL USUARIO -->
@@ -23,7 +98,7 @@
             name="valNom"
             class="form-control"
             placeholder="El monto recibido"
-            value="<%= typeof valNom != 'undefined' ? valNom : '' %>"
+            value="<%= typeof result.valNom != 'undefined' ? result.valNom : '' %>"
             required
           />
         </div>
@@ -141,71 +216,7 @@
 
     <button type="submit" class="btn btn-primary mb-3">Calcular</button>
   </form>
-  <hr class="dotted">
-  <div class="row">
-    <div class="col">
-      <h3>Gastos/Costes Iniciales</h3>
-    <form action="/dashboard/inicial" method="POST"></form>
-    
-      <label for="costName">Tipo de Coste/Gasto Inicial:</label>
-      <select class="form-select" name="costName" id="costName">
-        <option value="Portes">Portes</option>
-        <option value="Fotocopias">Fotocopias</option>
-        <option value="Comision de Estudio">Comision de Estudio</option>
-        <option value="Gastos de administración">Gastos de administración</option>
-      </select>
-      <div class="row">
-        <div class="col">
-          <div class="form-group form-inline">
-            <label for="costIni">Comision: </label>
-            <input
-              class="form-control"
-              id="costIni"
-              name="costIni"
-              class="form-control"
-              placeholder="El monto recibido"
-              value="<%= typeof costIni != 'undefined' ? costIni : '' %>"
-              required
-            />
-          </div>
-        </div>
-      </div>
-      <button type="submit" class="btn btn-primary mb-3">Agregar Costo</button>
-    </form>
-    <%- include ("./partials/costesIni") %>
-  </div>
-    <div class="col">
-      <h3>Gastos/Costes Finales</h3>
-      <form action="/dashboard/final" method="POST">
-    
-        <label for="costName">Tipo de Coste/Gasto Final:</label>
-        <select class="form-select" name="costName" id="costName">
-          <option value="Portes">Portes</option>
-          <option value="Fotocopias">Fotocopias</option>
-          <option value="Comision de Estudio">Comision de Estudio</option>
-          <option value="Gastos de administración">Gastos de administración</option>
-        </select>
-        <div class="row">
-          <div class="col">
-            <div class="form-group form-inline">
-              <label for="costFin">Comision: </label>
-              <input
-                class="form-control"
-                id="costFin"
-                name="costFin"
-                class="form-control"
-                placeholder="El monto recibido"
-                value="<%= typeof costFin != 'undefined' ? costFin : '' %>"
-                required
-              />
-            </div>
-          </div>
-        </div>
-        <button type="submit" class="btn btn-primary mb-3">Agregar Costo</button>
-      </form>
-      <%- include ("./partials/costesFin") %>
-    </div>
-  </div>
+  
   
   
   <%- include ("./partials/result") %>

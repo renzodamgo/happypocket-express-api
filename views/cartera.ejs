@@ -1,0 +1,19 @@
+<div class="container shadow bg-white">
+  <div class="row">
+    <div class="col">
+      <h1 class="mt-4">Happy Pocket 💸 <br>Cartera</h1>
+      <p class="lead mb-3">Bienvenido <%= name %></p>
+    </div>
+    <div class="col-2">
+      <a href="/dashboard" class="btn btn-primary">dashboard</a>
+    </div>
+    <div class="col-2">
+      <a href="/cartera" class="btn btn-primary">cartera</a>
+    </div>
+    <div class="col-2">
+      <a href="/users/logout" class="btn btn-primary">Logout</a>
+    </div>
+  </div>
+  <hr class="dotted" />
+  <%- include ("./partials/results") %>
+</div>

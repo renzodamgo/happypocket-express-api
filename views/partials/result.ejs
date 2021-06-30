@@ -1,21 +1,26 @@
 
-<% if(typeof result != 'undefined'){ %>
+<% if(typeof result.des != 'undefined'){ %>
     <hr class="dotted">
     <h2>Letra Descontada</h2>
-    
-    
-              <th scope="col">Tasa de Costo Efectiva</th>
-              <th scope="col">Tasa descontada</th>
-              <th scope="col">Valor Nominal</th>
-              <th scope="col">Descuento</th>
-              <th scope="col">Valor Neto</th>
-           
-               
-                <td><%= (result.TCE*100).toFixed(4); %></td>
-                <td><%= (result.tasaDes*100).toFixed(4); %></td>
-                <td><%= result.valNom; %></td>
-                <td><%= (result.des).toFixed(4); %></td>
-                <td><%= (result.valNeto).toFixed(4); %></td>
+       
+    <div class="row">
+        <div class="col">
+            <h4><span>TEP: </span>
+            <span><%= (result.TCE*100).toFixed(4); %>%</span></h4>
+            <h4><span>Tasa Descontada: </span>
+            <span><%= (result.tasaDes*100).toFixed(4); %>% </span></h4>
+        </div>
+        <div class="col">
+            <h4><span>Valor Nominal: </span>
+            <span><%= result.valNom; %></span></h4>
+            <h4><span>Descuento: </span>
+            <span><%= (result.des).toFixed(4); %></span></h4>
+            <h4><span>Valor Neto: </span>
+            <span><%= (result.valNeto).toFixed(4); %></span></h4>
+
+        </div>
+    </div>         
+
             
       
 <% } %>
