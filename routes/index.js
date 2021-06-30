@@ -146,9 +146,9 @@ router.post('/dashboard',ensureAuthenticated ,(req,res) => {
     //Si es Tasa Efectiva
     if(tipoTasa == 'nominal'){
         tasa2 = convertirTNaTEP(tasa,tPeriodo,tPeriodoCap,tPeriodoCap)
-        TEP = ((1+ tasa2/100)**(t/tPeriodoCap)) -1
+        TEP = ((1+ tasa2)**(t/tPeriodoCap)) -1
     }
-    console.log("tasa nominal: " ,tasa2,TEP)
+    console.log("tasa efectiva: " ,tasa2,TEP,t ,tPeriodoCap)
     //Costos Iniciales y Finales
     let costIniciales = 0
     let costFinales = 0
@@ -215,7 +215,3 @@ router.post('/dashboard',ensureAuthenticated ,(req,res) => {
 
 module.exports = router;
 
-Intl.NumberFormat("es-MX",{
-    style: "currency",
-    currency: "PEN",
-}).format(12323323232)
